@@ -6,6 +6,7 @@ COPY ./requirements.txt /workdir/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /workdir/requirements.txt
 
-COPY ./app /workdir/app
+COPY ./src /workdir/src
 
-CMD ["uvicorn", "app.main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
+WORKDIR /workdir/src
+CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]

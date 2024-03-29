@@ -1,14 +1,13 @@
 # flake8: noqa: F401
 
 import asyncio
-import os
-import sys
 from logging.config import fileConfig
 
-from alembic import context
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
+
+from alembic import context
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -19,8 +18,7 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-from src.data.db import Model
-from src.data.models import users
+from src.data.models import *
 from src.settings import settings
 
 # (!) Added here for automigrations
